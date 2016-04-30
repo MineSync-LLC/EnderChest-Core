@@ -75,7 +75,7 @@ public class EventListener implements Listener {
 		if (player.getWorld().getEnvironment() == Environment.NETHER) {
 			if (player.getLocation().getBlockY() >= 128) {
 				if (!player.hasPermission("enderchest.roof")) {
-					player.sendMessage(ChatColor.RED + "You can't build here1");
+					player.sendMessage(ChatColor.RED + "You can't build here!");
 					event.setCancelled(true);
 				}
 			}

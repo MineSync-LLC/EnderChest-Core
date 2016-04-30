@@ -1,0 +1,26 @@
+name: Enderchest
+version: 1.0-SNAPSHOT
+description: For Empire Servers (Enderchest)
+authors: [Lightning2552, 0hz, flash1110, Gerpaderp]
+main: org.realcodingteam.enderchest.Enderchest
+
+commands:
+  menu:
+    permission: chatcolor.use
+    description: Open up a menu
+    usage: /<command>
+    aliases: [menucolor, colormenu, color, ncolor, namecolor, chatcolor]
+  cc:
+    permission: chatcolor.use
+    description: Use ChatColor
+    usage: /<command> [args]
+  nc:
+    permission: chatcolor.use
+    description: Changes your Name Color
+    usage: /<command>
+permissions:
+  empireplugin.*:
+    description: Op command
+    children:
+      chatcolor.use: true
+    default: op

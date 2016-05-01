@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.realcodingteam.enderchest.util.Util;
 
 public class MenuCommand implements CommandExecutor {
 
@@ -28,23 +28,14 @@ public class MenuCommand implements CommandExecutor {
 		}
 		
 		Inventory inv = Bukkit.createInventory(null, 9, ChatColor.GREEN + "Color Menu");
-		
-		ItemStack chat = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-		ItemMeta chatm = chat.getItemMeta();
-		chatm.setDisplayName(ChatColor.RED + "Chat Color");
-		chatm.setLore(Arrays.asList(ChatColor.GOLD + "Change your ChatColor"));
-		chat.setItemMeta(chatm);
-		
-		ItemStack name = new ItemStack(Material.STAINED_GLASS_PANE, 1);
-		ItemMeta namem = name.getItemMeta();
-		namem.setDisplayName(ChatColor.RED + "Name Color");
-		namem.setLore(Arrays.asList(ChatColor.GOLD + "Change your Name Color"));
-		name.setItemMeta(namem);
+		ItemStack chat = Util.getItem(Material.STAINED_GLASS_PANE, 1, ChatColor.RED + "Chat Color", Arrays.asList(ChatColor.GOLD + "Change your ChatColor!"));
+		ItemStack name = Util.getItem(Material.STAINED_GLASS_PANE, 1, ChatColor.RED + "Name Color", Arrays.asList(ChatColor.GOLD + "Change your Name Color"));
 		
 		inv.setItem(3, chat);
 		inv.setItem(5, name);
 		
 		((Player) sender).openInventory(inv);
+		
 		return true;
 	}
 

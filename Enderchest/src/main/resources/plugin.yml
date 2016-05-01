@@ -5,6 +5,23 @@ authors: [Lightning2552, 0hz, flash1110, Gerpaderp]
 main: org.realcodingteam.enderchest.Enderchest
 
 commands:
+  bounce:
+    permission: enderchest.bounce
+    description: !
+    usage: /<command>
+  globalmute:
+    permission: enderchest.globalmute
+    description: Mute the server's chat
+    usage: /<command>
+  selllist:
+    permission: enderchest.selllist
+    description: See a list of what can be sold
+    usage: /<command> [args]
+    aliases: [sl, costs]
+  suicide:
+    permission: enderchest.suicide
+    description: Kill yourself
+    usage: /<command>
   menu:
     permission: chatcolor.use
     description: Open up a menu

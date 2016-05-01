@@ -1,12 +1,16 @@
 package org.realcodingteam.enderchest;
 
-import java.util.UUID;
+import java.io.File;
+import java.util.Collections;
 import java.util.Map.Entry;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.UUID;
 import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.realcodingteam.enderchest.commands.BounceCommand;
 import org.realcodingteam.enderchest.commands.ChatColorCommand;
@@ -19,6 +23,7 @@ import org.realcodingteam.enderchest.listeners.ChatColorListener;
 public class Enderchest extends JavaPlugin {
 
 	public static Enderchest instance;
+	public static SortedMap<Integer, String> costs;
 	
 	@Override
 	public void onEnable() {
@@ -44,9 +49,8 @@ public class Enderchest extends JavaPlugin {
 				ChatColorListener.list.put(UUID.fromString(id), ChatColor.valueOf(getConfig().getString("colors." + id)));
 			}
 			
+			loadCosts();
 		} catch (Throwable t) {
-			
-			
 			getLogger().log(Level.SEVERE, "There was an error initilzing the plugin", t);
 			getServer().getPluginManager().disablePlugin(this);
 		}
@@ -60,17 +64,15 @@ public class Enderchest extends JavaPlugin {
 		}
 	}
 	
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	private void loadCosts() {
+		costs = new TreeMap<>(Collections.reverseOrder());
 		
-		if (label.equalsIgnoreCase("1")) {
-			
-		} else if (label.equalsIgnoreCase("2")) {
-			
-		} else if (label.equalsIgnoreCase("3")) {
-			
+		File ess = new File(new File("").getParent() + "/Essentials/worth.yml");
+		FileConfiguration config = YamlConfiguration.loadConfiguration(ess);
+		int counter = 0;
+		
+		for (String s : config.getConfigurationSection("worth").getKeys(true)) {
+			costs.put(counter++, s + ": " + config.getDouble("worth." + s));
 		}
-		
-		return true;
 	}
 }

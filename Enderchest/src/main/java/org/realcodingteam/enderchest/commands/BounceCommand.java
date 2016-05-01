@@ -17,7 +17,7 @@ public final class BounceCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
-		if (!sender.hasPermission("luz.bounce")) {
+		if (!sender.hasPermission("enderchest.bounce")) {
 			sender.sendMessage(ChatColor.RED + "You lack permission!");
 			return true;
 		}
